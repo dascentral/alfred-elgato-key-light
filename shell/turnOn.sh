@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+lights[0]="10.0.0.20"
+lights[1]="10.0.0.22"
+
 port="9123"
 
 brightness=$1
@@ -11,10 +14,6 @@ temperature=$2
 if [ -z "$temperature" ]; then
     temperature="186"
 fi
-
-# declare array of lights
-lights[0]="10.0.0.20"
-lights[1]="10.0.0.22"
 
 if [ $# == 0 ]; then
     for item in "${lights[@]}"; do
