@@ -15,11 +15,9 @@ if [ -z "$temperature" ]; then
     temperature="186"
 fi
 
-if [ $# == 0 ]; then
-    for item in "${lights[@]}"; do
-        curl --location --request PUT 'http://'"$item"':'"$port"'/elgato/lights' \
-            --header 'Content-Type: application/json' \
-            --data-raw '{"lights":[{"brightness":'"$brightness"',"temperature":'"$temperature"',"on":1}],"numberOfLights":1}'
-        echo ""
-    done
-fi
+for item in "${lights[@]}"; do
+    curl --location --request PUT 'http://'"$item"':'"$port"'/elgato/lights' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{"lights":[{"brightness":'"$brightness"',"temperature":'"$temperature"',"on":1}],"numberOfLights":1}'
+    echo ""
+done
